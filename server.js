@@ -23,15 +23,47 @@ const dreams = [
   "Wash the dishes"
 ]
 
-app.get("/dreams", (request, response) => {
-  response.send(dreams)
-})
+app.get('/:time', function (req, res) {
+  function unixToNatural(unix) {
+    var date = new Date(unix * 1000); // milliseconds
+    var months = {
+      0: 'January',
+      1: 'February',
+      2: 'March',
+      3: 'April',
+      4: 'May',
+      5: 'June',
+      6: 'July',
+      7: 'August',
+      8: 'September',
+      9: 'October',
+      10: 'November',
+      11: 'December',
+    };
 
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", (request, response) => {
-  dreams.push(request.query.dream)
-  response.sendStatus(200)
-})
+    var month = months[date.getMonth()];
+    var day = date.getDate();
+    var year = date.getFullYear();
+
+    var result = month + ' ' + day + ', ' + year;
+    return result;
+  }
+
+  if (!isNaN(req.params.time)) {
+    var naturalDate = unixToNatural(req.params.time); // seconds
+    var answer1 = { unix: req.params.time, natural: naturalDate };
+    res.json(answer1);
+  } else {
+    var naturalDateToUnix = new Date(req.params.time); // should be in milliseconds
+    if (!isNaN(naturalDateToUnix)) {
+      var unix = naturalDateToUnix / 1000; // seconds
+      var answer2 = { unix: unix, natural: req.params.time };
+      res.json(answer2);
+    } else {
+      res.json({ unix: null, natural: null });
+    }
+  }
+});
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
