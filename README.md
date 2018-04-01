@@ -1,14 +1,9 @@
-Welcome to the Glitch BETA
+Timestamp Microservice
 ==========================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+This is my first FCC Back-End Project and a simple full stack JavaScript app that accepts a  parameter from user (unix timestamp or a natural language date) and returns both the Unix timestamp and the natural language form of that date. Deployed on **Glitch**. Full README and deploying on heroku look at timestampMicroservice repository 
 
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
-
-Find out more [about Glitch](https://glitch.com/about).
-
-
-Your Project
+Project
 ------------
 
 On the front-end,
@@ -21,7 +16,3 @@ On the back-end,
 - safely store app secrets in `.env` (nobody can see this but you and people you invite)
 
 
-Made by [Fog Creek](https://fogcreek.com/)
--------------------
-
-\ ゜o゜)ノ
