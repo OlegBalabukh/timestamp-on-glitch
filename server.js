@@ -12,7 +12,7 @@ const app = express()
 app.use(express.static('public'))
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
+app.set("/", (request, response) => {
   response.sendFile(__dirname + '/views/index.html')
 })
 
